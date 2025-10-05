@@ -41,6 +41,33 @@ export default function AuthClientPage() {
     try {
       if (isSignIn) {
         console.log("Signed in");
+
+        const { data, error } = await authClient.signIn.email(
+          {
+            email,
+            password,
+            /**
+             * A URL to redirect to after the user verifies their email/successful login but reloads the page (optional)
+             */
+            // callbackURL: "/dashboard",
+
+            /**
+             * remember the user session after the browser is closed.
+             * @default true
+             */
+            rememberMe: false,
+          },
+          {
+            //callbacks
+            onSuccess: (ctx) => {
+              //redirect to the dashboard or sign in page
+              console.log("Sign in successful!", ctx);
+              router.push("/dashboard");
+            },
+          }
+        );
+
+        console.log("data after login", data, "error after login", error);
       } else {
         console.log("Start Signing up process");
 
