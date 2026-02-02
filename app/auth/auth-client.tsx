@@ -48,6 +48,7 @@ export default function AuthClientPage() {
             password,
             /**
              * A URL to redirect to after the user verifies their email/successful login but reloads the page (optional)
+             * it will redirect & also reload the page (optional, but reloading is good to fetch the session again after login is successful to avoid stale session or ensure session is properly set)
              */
             // callbackURL: "/dashboard",
 
